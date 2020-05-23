@@ -54,10 +54,10 @@ export default () => {
 
   return (
     <>
-      <LogoButton onClick={() => router.push("/")}>
+      <LogoButton onClick={() => router.push("/")} aria-label={"Home"}>
         <Logo height={elementSizeM} />
       </LogoButton>
-      <BurgerButton>
+      <BurgerButton aria-label={"Menu"}>
         <Burger />
       </BurgerButton>
     </>

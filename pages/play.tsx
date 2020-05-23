@@ -67,7 +67,7 @@ export default ({ gameId, gameDataString }: Play) => {
               await firestore.init();
               console.log(values["Choose a Card"]);
               firestore.playCard(gameId, values["Choose a Card"]);
-              router.push(`/game?id=${gameId}&result=1`);
+              await router.push(`/game?id=${gameId}&result=1`);
             }}
           >
             {({ isSubmitting }) => (
