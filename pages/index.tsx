@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Formik, Form } from "formik";
 
 import { useRouter } from "next/router";
@@ -63,7 +65,7 @@ export default () => {
               const gameRef = await firestore.createGame(Topic, cardsArray);
 
               if (gameRef) {
-                router.push(`/game?id=${gameRef.id}`);
+                await router.push(`/game?id=${gameRef.id}`);
               }
             }}
           >

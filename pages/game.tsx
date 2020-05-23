@@ -109,7 +109,9 @@ const GameResultView = ({ gameId }: GameResultView) => {
 
   return (
     <>
-      <SubtitleView>{numPlayedCards} Cards Played</SubtitleView>
+      <SubtitleView>
+        {numPlayedCards} {numPlayedCards == 1 ? "Card" : "Cards"} Played
+      </SubtitleView>
 
       <CardsContainer>
         {playedCards.map((cardType: any, i: number) => (
