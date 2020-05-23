@@ -1,8 +1,4 @@
-# NextJS
+node_modules
 .next
-
-# Now
 .now
-
-# JS
-node_modules/
+.vercel
