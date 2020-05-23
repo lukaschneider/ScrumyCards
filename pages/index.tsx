@@ -1,31 +1,106 @@
-import Head from "next/head";
+import { Formik, Form } from "formik";
+
+import { useRouter } from "next/router";
+
+import {
+  ActionPane,
+  InfoPane,
+  TitleView,
+  TextView,
+  LabelView,
+} from "../components/Views";
+import { TextField, Button } from "../components/Inputs";
+import {
+  ContentContainer,
+  TitleContainer,
+  TextContainer,
+  formWidth,
+} from "../components/Layouts";
+
+import { monospaceFont } from "../utils/fonts";
+import * as firestore from "../utils/dataAccess";
+
+const getCardsArray = (cardsString: string) => {
+  const cardRegex = /[,\s]/;
+  let cards = cardsString.split(cardRegex);
+  return cards.filter((card) => card);
+};
 
 export default () => {
-  return [
-    <Head>
-      <title>Scrumy Cards</title>
-    </Head>,
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        flex: 1
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexWrap: "wrap"
-        }}
-      >
-        <img src="/assets/img/logo.svg" style={{ width: 200 }} />
-        <text style={{ fontWeight: "bold", fontSize: "xx-large", margin: 20 }}>
-          Coming Soon!
-        </text>
-      </div>
-    </div>
-  ];
+  const router = useRouter();
+
+  return (
+    <>
+      <ActionPane>
+        <ContentContainer>
+          <Formik
+            initialValues={{ Topic: "", Cards: "" }}
+            validate={({ Topic, Cards }) => {
+              let errors: { Topic?: string; Cards?: string } = {};
+
+              Topic = Topic.trim();
+              Cards = Cards.trim();
+
+              if (!Topic) errors.Topic = "Required";
+              if (!Cards) errors.Cards = "Required";
+
+              const cardsArray = getCardsArray(Cards);
+
+              cardsArray.forEach((card) => {
+                if (card.length > 4)
+                  errors.Cards = "A card has a maximum of 4 characters";
+              });
+
+              return errors;
+            }}
+            onSubmit={async ({ Topic, Cards }) => {
+              Topic = Topic.trim();
+              Cards = Cards.trim();
+
+              const cardsArray = getCardsArray(Cards);
+
+              await firestore.init();
+              const gameRef = await firestore.createGame(Topic, cardsArray);
+
+              if (gameRef) {
+                router.push(`/game?id=${gameRef.id}`);
+              }
+            }}
+          >
+            {({ isSubmitting }) => (
+              <Form style={{ width: `min(${formWidth}px, 100%)` }}>
+                <LabelView name="Topic" />
+                <TextField
+                  placeholder="Implement Super Duper Code"
+                  name="Topic"
+                />
+                <LabelView name="Cards" />
+                <TextField
+                  style={{ fontFamily: monospaceFont }}
+                  placeholder="0.5 1 2 3 5 8 20 40 100"
+                  name="Cards"
+                />
+                <Button type="submit" disabled={isSubmitting}>
+                  Start
+                </Button>
+              </Form>
+            )}
+          </Formik>
+        </ContentContainer>
+      </ActionPane>
+      <InfoPane>
+        <ContentContainer style={{ textAlign: "center" }}>
+          <TitleContainer>
+            <TitleView>Simply</TitleView>
+            <TitleView>Scrum Poker</TitleView>
+          </TitleContainer>
+          <TextContainer style={{ maxWidth: 350, marginTop: 0 }}>
+            <TextView>
+              A Simple tool to play Scrum Poker with your team anywhere you are.
+            </TextView>
+          </TextContainer>
+        </ContentContainer>
+      </InfoPane>
+    </>
+  );
 };
