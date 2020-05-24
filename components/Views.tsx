@@ -38,6 +38,11 @@ export const TextView = styled.p`
   margin: 0;
 `;
 
+export const ParagraphView = styled.p`
+  font-size: ${fontSizeM}px;
+  color: ${({ theme }) => theme.text};
+`;
+
 export const NoteTextView = styled.p`
   font-size: ${fontSizeS}px;
   color: ${({ theme }) => theme.text};
@@ -63,6 +68,11 @@ export const SubtitleView = styled.h2`
 export const TopicSubtitleView = styled(SubtitleView)`
   color: ${({ theme }) => theme.text};
   margin-bottom: ${spacingM}px;
+`;
+
+export const UnorderedListView = styled.ul`
+  font-size: ${fontSizeM}px;
+  color: ${({ theme }) => theme.text};
 `;
 
 const LabelViewContainer = styled.div`

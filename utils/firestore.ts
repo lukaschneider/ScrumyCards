@@ -1,5 +1,6 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/analytics";
 import "firebase/firestore";
 
 import { groupBy, sortBy } from "lodash";
@@ -25,17 +26,20 @@ export const init = async () => {
     firebase.initializeApp(firebaseConfig);
   }
 
-  // Create Anonymous user
+  // Initialize Firestore
+  if (!firestore) {
+    firestore = firebase.firestore();
+  }
+};
+
+export const createAnonymousUser = async () => {
   if (!firebase.auth().currentUser || !userId) {
     const userRef = await firebase.auth().signInAnonymously();
 
     if (!userRef.user) console.error("Anonymous user creation failed.");
     else userId = userRef.user?.uid;
-  }
 
-  // Initialize Firestore
-  if (!firestore) {
-    firestore = firebase.firestore();
+    return userId;
   }
 };
 
@@ -53,7 +57,6 @@ export const createGame = async (topic: string, cards: string[]) => {
 };
 
 export const getGame = async (id: string) => {
-  if (!userId) console.warn("No user found!");
   return await firestore.collection("Games").doc(id).get();
 };
 
@@ -77,8 +80,6 @@ export const subscribePlayedCards = async (
   gameId: string,
   setPlayedCards: Function
 ) => {
-  if (!userId) console.warn("No user found!");
-
   firestore
     .collection("Games")
     .doc(gameId)

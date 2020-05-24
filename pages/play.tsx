@@ -13,7 +13,7 @@ import {
   LabelView,
 } from "../components/Views";
 
-import * as firestore from "../utils/dataAccess";
+import * as firestore from "../utils/firestore";
 import { redirect } from "../utils/routing";
 import { monospaceFont } from "../utils/fonts";
 

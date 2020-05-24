@@ -17,7 +17,7 @@ import {
   NoteTextView,
 } from "../components/Views";
 
-import * as firestore from "../utils/dataAccess";
+import * as firestore from "../utils/firestore";
 import { redirect } from "../utils/routing";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
