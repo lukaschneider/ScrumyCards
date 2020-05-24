@@ -28,13 +28,19 @@ export default ({ Component, pageProps }: AppProps) => {
     initializeFirebase();
   }, []);
 
+  const [sideMenu, setSideMenu] = React.useState(false);
+
   return (
     <ThemeProvider theme={useSystemTheme()}>
-      <Navigation />
-      <AppContainer>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </AppContainer>
+      <GlobalStyle />
+      <Navigation sideMenu={sideMenu} setSideMenu={setSideMenu} />
+      {!sideMenu ? (
+        <AppContainer>
+          <Component {...pageProps} />
+        </AppContainer>
+      ) : (
+        ""
+      )}
     </ThemeProvider>
   );
 };
