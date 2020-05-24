@@ -16,6 +16,7 @@ export type Theme = {
   selectionColor: string;
   text: string;
   title: string;
+  linkColor: string;
 };
 
 declare module "styled-components" {
@@ -36,6 +37,7 @@ export const darkTheme: Theme = {
   selectionColor: "#000",
   text: "#aaa",
   title: "#fff",
+  linkColor: "#fff",
 };
 
 export const lightTheme: Theme = {
@@ -52,6 +54,7 @@ export const lightTheme: Theme = {
   selectionColor: "#fff",
   text: "#555",
   title: "#000",
+  linkColor: "#000",
 };
 
 export const useLocalTheme = () => {

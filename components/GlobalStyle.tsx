@@ -17,4 +17,7 @@ export default createGlobalStyle`
     border: 0;
   }
 
+  a {
+    color: ${({ theme }) => theme.linkColor}
+  }
 `;
