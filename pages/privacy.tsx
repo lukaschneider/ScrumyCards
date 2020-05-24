@@ -133,7 +133,7 @@ export default () => {
                 third-party sites or services.
               </ParagraphView>
 
-              <ParagraphView>Children's Privacy</ParagraphView>
+              <SubtitleView>Children's Privacy</SubtitleView>
 
               <ParagraphView>
                 Our Services do not address anyone under the age of 13. We do
@@ -160,7 +160,11 @@ export default () => {
 
               <ParagraphView>
                 If you have any questions or suggestions about our Privacy
-                Policy, do not hesitate to contact us.
+                Policy, do not hesitate to contact us at{" "}
+                <a href="mailto:scrumycards@icloud.com">
+                  scrumycards@icloud.com
+                </a>
+                .
               </ParagraphView>
             </TextContainer>
           </div>
