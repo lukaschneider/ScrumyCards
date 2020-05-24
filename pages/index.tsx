@@ -5,6 +5,8 @@ import { Formik, Form } from "formik";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+import { uniq } from "lodash";
+
 import {
   ActionPane,
   InfoPane,
@@ -24,9 +26,10 @@ import { monospaceFont } from "../utils/fonts";
 import * as firestore from "../utils/firestore";
 
 const getCardsArray = (cardsString: string) => {
-  const cardRegex = /[,\s]/;
+  const cardRegex = /[\s]/;
   let cards = cardsString.split(cardRegex);
-  return cards.filter((card) => card);
+
+  return uniq(cards.filter((card) => card));
 };
 
 export default () => {
@@ -104,7 +107,7 @@ export default () => {
           </TitleContainer>
           <TextContainer style={{ maxWidth: 350, marginTop: 0 }}>
             <TextView>
-              A simple tool to play Scrum Poker with your team anywhere you are.
+              A simple tool to play Scrum Poker with your team.
             </TextView>
           </TextContainer>
         </ContentContainer>

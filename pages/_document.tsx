@@ -41,7 +41,7 @@ export default class extends Document {
         <Head>
           <meta
             name="Description"
-            content="A simple tool to play Scrum Poker with your team anywhere you are."
+            content="A simple tool to play Scrum Poker with your team."
           />
         </Head>
         <body>

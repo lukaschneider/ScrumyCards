@@ -10,9 +10,9 @@ import {
   spacingXXL,
   spacingXL,
   spacingL,
+  spacingS,
   elementSizeM,
   borderWidth,
-  spacingS,
 } from "./Layouts";
 import { BlankButton } from "./Inputs";
 import { InfoPane, SubtitleView } from "./Views";
@@ -49,9 +49,36 @@ const BurgerButton = styled(BlankButton)`
   ${focusEffect};
 `;
 
-const MenuItem = styled.a`
+const MenuItemContainer = styled.div`
+  margin: ${spacingS}px 0;
+
   ${focusEffect}
 `;
+
+interface MenuItem {
+  href: string;
+  text: string;
+  setSideMenu: Function;
+}
+
+const MenuItem = ({ href, text, setSideMenu }: MenuItem) => {
+  const router = useRouter();
+
+  return (
+    <MenuItemContainer>
+      <a
+        href={href}
+        style={{ outline: "none" }}
+        onClick={async (e) => {
+          e.preventDefault(), await router.push(href);
+          setSideMenu(false);
+        }}
+      >
+        <SubtitleView>{text}</SubtitleView>
+      </a>
+    </MenuItemContainer>
+  );
+};
 
 interface Navigation {
   sideMenu: boolean;
@@ -67,7 +94,13 @@ export default ({ sideMenu, setSideMenu }: Navigation) => {
 
   return (
     <>
-      <LogoButton onClick={() => router.push("/")} aria-label={"Home"}>
+      <LogoButton
+        onClick={() => {
+          router.push("/");
+          setSideMenu(false);
+        }}
+        aria-label={"Home"}
+      >
         <Logo height={elementSizeM} />
       </LogoButton>
       <BurgerButton aria-label={"Menu"} onClick={() => setSideMenu(!sideMenu)}>
@@ -81,9 +114,8 @@ export default ({ sideMenu, setSideMenu }: Navigation) => {
           right: 0,
         }}
       >
-        <MenuItem href="/privacy">
-          <SubtitleView>Privacy</SubtitleView>
-        </MenuItem>
+        <MenuItem href="/" text="Home" setSideMenu={setSideMenu} />
+        <MenuItem href="/privacy" text="Privacy" setSideMenu={setSideMenu} />
       </InfoPane>
     </>
   );

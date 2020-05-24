@@ -18,6 +18,6 @@ export default createGlobalStyle`
   }
 
   a {
-    color: ${({ theme }) => theme.linkColor}
+    color: ${({ theme }) => theme.linkColor};
   }
 `;
