@@ -43,9 +43,6 @@ export default () => {
               </ParagraphView>
 
               <ParagraphView>
-                The terms used in this Privacy Policy have the same meanings as
-                in our Terms and Conditions, which is accessible at
-                scrumy.cards, unless otherwise defined in this Privacy Policy.
                 Our Privacy Policy was created with the help of the{" "}
                 <a href="https://www.privacypolicytemplate.net">
                   Privacy Policy Template
@@ -55,16 +52,6 @@ export default () => {
                   Disclaimer Generator
                 </a>
                 .
-              </ParagraphView>
-
-              <SubtitleView>Information Collection and Use</SubtitleView>
-
-              <ParagraphView>
-                For a better experience while using our Service, we may require
-                you to provide us with certain personally identifiable
-                information, including but not limited to your name, phone
-                number, and postal address. The information that we collect will
-                be used to contact or identify you.
               </ParagraphView>
 
               <SubtitleView>Log Data</SubtitleView>
@@ -89,10 +76,9 @@ export default () => {
 
               <ParagraphView>
                 Our website uses these "cookies" to collection information and
-                to improve our Service. You have the option to either accept or
-                refuse these cookies, and know when a cookie is being sent to
-                your computer. If you choose to refuse our cookies, you may not
-                be able to use some portions of our Service.
+                to improve our Service. If you choose to disable cookies on our
+                website, you may not be able to use some portions of our
+                Service.
               </ParagraphView>
 
               <ParagraphView>
