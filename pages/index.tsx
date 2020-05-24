@@ -20,7 +20,7 @@ import {
 } from "../components/Layouts";
 
 import { monospaceFont } from "../utils/fonts";
-import * as firestore from "../utils/dataAccess";
+import * as firestore from "../utils/firestore";
 
 const getCardsArray = (cardsString: string) => {
   const cardRegex = /[,\s]/;
