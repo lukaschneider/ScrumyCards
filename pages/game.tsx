@@ -1,6 +1,7 @@
 import React from "react";
 
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 
 import styled from "styled-components";
 
@@ -56,6 +57,9 @@ export default ({ gameId, gameDataString, result }: Game) => {
 
   return (
     <>
+      <Head>
+        <title>Scrumy Cards | {gameData.topic}</title>
+      </Head>
       <ActionPane>
         <ContentContainer>
           {resultView ? (
@@ -128,7 +132,7 @@ const GameResultView = ({ gameId }: GameResultView) => {
 };
 
 const GameQR = styled(QRView)`
-  margin: ${spacingM}px 0 ${spacingS}px 0;
+  margin: ${spacingM}px 0 ${spacingS}px 0 !important;
 `;
 
 interface GameShareView {

@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import {
   InfoPane,
   TitleView,
@@ -7,20 +9,23 @@ import {
 } from "../components/Views";
 import {
   ContentContainer,
-  TitleContainer,
   TextContainer,
   formWidth,
+  spacingL,
 } from "../components/Layouts";
 
 export default () => {
   return (
     <>
+      <Head>
+        <title>Scrumy Cards | Privacy</title>
+      </Head>
       <InfoPane>
         <ContentContainer>
           <div style={{ width: `min(${formWidth * 2}px, 100%)` }}>
-            <TitleContainer>
+            <div style={{ margin: spacingL }}>
               <TitleView>Privacy</TitleView>
-            </TitleContainer>
+            </div>
             <TextContainer>
               <ParagraphView>
                 This page is used to inform our visitors regarding our policies
