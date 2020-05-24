@@ -1,6 +1,7 @@
 import { Formik, Form } from "formik";
 
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 import { Button, SelectionField } from "../components/Inputs";
@@ -49,6 +50,9 @@ export default ({ gameId, gameDataString }: Play) => {
 
   return (
     <>
+      <Head>
+        <title>Scrumy Cards ▶ {gameData.topic}</title>
+      </Head>
       <ActionPane>
         <ContentContainer>
           <Formik
@@ -76,6 +80,7 @@ export default ({ gameId, gameDataString }: Play) => {
                 <SelectionField
                   options={gameData.cards}
                   name="Choose a Card"
+                  id="Choose a Card"
                   style={{ fontFamily: monospaceFont }}
                 />
                 <Button type="submit" disabled={isSubmitting}>

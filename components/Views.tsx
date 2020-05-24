@@ -92,7 +92,9 @@ const LabelErrorMessage = styled(ErrorMessage)`
 
 export const LabelView = ({ ...errorMessageProps }: ErrorMessageProps) => (
   <LabelViewContainer>
-    <SubtitleView>{errorMessageProps.name}</SubtitleView>
+    <label htmlFor={errorMessageProps.name}>
+      <SubtitleView>{errorMessageProps.name}</SubtitleView>
+    </label>
     <LabelErrorMessage component={NoteTextView} {...errorMessageProps} />
   </LabelViewContainer>
 );

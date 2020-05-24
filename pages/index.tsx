@@ -2,6 +2,7 @@ import React from "react";
 
 import { Formik, Form } from "formik";
 
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 import {
@@ -33,6 +34,9 @@ export default () => {
 
   return (
     <>
+      <Head>
+        <title>Scrumy Cards</title>
+      </Head>
       <ActionPane>
         <ContentContainer>
           <Formik
@@ -75,12 +79,14 @@ export default () => {
                 <TextField
                   placeholder="Implement Super Duper Code"
                   name="Topic"
+                  id="Topic"
                 />
                 <LabelView name="Cards" />
                 <TextField
                   style={{ fontFamily: monospaceFont }}
                   placeholder="0.5 1 2 3 5 8 20 40 100"
                   name="Cards"
+                  id="Cards"
                 />
                 <Button type="submit" disabled={isSubmitting}>
                   Start
@@ -98,7 +104,7 @@ export default () => {
           </TitleContainer>
           <TextContainer style={{ maxWidth: 350, marginTop: 0 }}>
             <TextView>
-              A Simple tool to play Scrum Poker with your team anywhere you are.
+              A simple tool to play Scrum Poker with your team anywhere you are.
             </TextView>
           </TextContainer>
         </ContentContainer>

@@ -1,4 +1,10 @@
-import Document, { DocumentContext } from "next/document";
+import Document, {
+  DocumentContext,
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from "next/document";
 
 import { ServerStyleSheet } from "styled-components";
 
@@ -27,5 +33,22 @@ export default class extends Document {
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <Html lang={"en"}>
+        <Head>
+          <meta
+            name="Description"
+            content="A simple tool to play Scrum Poker with your team anywhere you are."
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }
