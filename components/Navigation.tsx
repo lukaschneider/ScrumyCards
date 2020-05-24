@@ -13,6 +13,7 @@ import {
   spacingS,
   elementSizeM,
   borderWidth,
+  ContentContainer,
 } from "./Layouts";
 import { BlankButton } from "./Inputs";
 import { InfoPane, SubtitleView } from "./Views";
@@ -114,8 +115,10 @@ export default ({ sideMenu, setSideMenu }: Navigation) => {
           right: 0,
         }}
       >
-        <MenuItem href="/" text="Home" setSideMenu={setSideMenu} />
-        <MenuItem href="/privacy" text="Privacy" setSideMenu={setSideMenu} />
+        <ContentContainer>
+          <MenuItem href="/" text="Home" setSideMenu={setSideMenu} />
+          <MenuItem href="/privacy" text="Privacy" setSideMenu={setSideMenu} />
+        </ContentContainer>
       </InfoPane>
     </>
   );
