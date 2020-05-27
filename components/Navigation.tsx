@@ -30,6 +30,11 @@ const focusEffect = css`
     border-bottom: ${borderWidth}px solid
       ${({ theme }) => theme.inputPlaceholderColor};
   }
+
+  transition: opacity 0.25s ease-in-out;
+  :hover {
+    opacity: 0.75;
+  }
 `;
 
 const LogoButton = styled(BlankButton)`
@@ -69,7 +74,7 @@ const MenuItem = ({ href, text, setSideMenu }: MenuItem) => {
     <MenuItemContainer>
       <a
         href={href}
-        style={{ outline: "none" }}
+        style={{ outline: "none", textDecoration: "none" }}
         onClick={async (e) => {
           e.preventDefault(), await router.push(href);
           setSideMenu(false);
@@ -118,6 +123,11 @@ export default ({ sideMenu, setSideMenu }: Navigation) => {
         <ContentContainer>
           <MenuItem href="/" text="Home" setSideMenu={setSideMenu} />
           <MenuItem href="/privacy" text="Privacy" setSideMenu={setSideMenu} />
+          <MenuItem
+            href="/terms"
+            text="Terms & Conditions"
+            setSideMenu={setSideMenu}
+          />
         </ContentContainer>
       </InfoPane>
     </>
