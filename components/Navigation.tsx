@@ -30,7 +30,6 @@ const focusEffect = css`
     border-bottom: ${borderWidth}px solid
       ${({ theme }) => theme.inputPlaceholderColor};
   }
-
   transition: opacity 0.25s ease-in-out;
   :hover {
     opacity: 0.75;
