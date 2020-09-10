@@ -67,7 +67,7 @@ const CreditContainer = styled(TextView)`
   bottom: ${spacingXXL}px;
   text-align: center;
 
-  margin: 0 ${spacingM}px;
+  padding: 0 ${spacingM}px;
 `;
 
 const CreditLink = styled.a`
