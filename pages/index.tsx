@@ -32,7 +32,7 @@ const getCardsArray = (cardsString: string) => {
   return uniq(cards.filter((card) => card));
 };
 
-export default () => {
+const index = () => {
   const router = useRouter();
 
   return (
@@ -115,3 +115,5 @@ export default () => {
     </>
   );
 };
+
+export default index;

@@ -14,7 +14,7 @@ import {
   spacingL,
 } from "../components/Layouts";
 
-export default () => {
+const privacy = () => {
   return (
     <>
       <Head>
@@ -173,3 +173,5 @@ export default () => {
     </>
   );
 };
+
+export default privacy;

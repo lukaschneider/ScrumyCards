@@ -43,7 +43,7 @@ interface Play {
   gameDataString: string;
 }
 
-export default ({ gameId, gameDataString }: Play) => {
+const play = ({ gameId, gameDataString }: Play) => {
   const router = useRouter();
 
   const gameData = JSON.parse(gameDataString);
@@ -100,3 +100,5 @@ export default ({ gameId, gameDataString }: Play) => {
     </>
   );
 };
+
+export default play;

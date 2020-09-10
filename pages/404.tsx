@@ -1,7 +1,7 @@
 import { InfoPane, TitleView, TextView } from "../components/Views";
 import { TitleContainer } from "../components/Layouts";
 
-export default () => {
+const notFound = () => {
   return (
     <InfoPane>
       <TitleContainer>
@@ -11,3 +11,5 @@ export default () => {
     </InfoPane>
   );
 };
+
+export default notFound;

@@ -15,7 +15,7 @@ import {
   spacingL,
 } from "../components/Layouts";
 
-export default () => {
+const terms = () => {
   return (
     <>
       <Head>
@@ -150,3 +150,5 @@ export default () => {
     </>
   );
 };
+
+export default terms;

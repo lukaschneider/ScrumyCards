@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import styled, { css } from "styled-components";
 
@@ -10,13 +11,14 @@ import {
   spacingXXL,
   spacingXL,
   spacingL,
+  spacingM,
   spacingS,
   elementSizeM,
   borderWidth,
   ContentContainer,
 } from "./Layouts";
 import { BlankButton } from "./Inputs";
-import { InfoPane, SubtitleView } from "./Views";
+import { InfoPane, SubtitleView, TextView } from "./Views";
 
 const focusEffect = css`
   border-bottom: ${borderWidth}px solid transparent;
@@ -60,6 +62,18 @@ const MenuItemContainer = styled.div`
   ${focusEffect}
 `;
 
+const CreditContainer = styled(TextView)`
+  position: absolute;
+  bottom: ${spacingXXL}px;
+  text-align: center;
+
+  margin: 0 ${spacingM}px;
+`;
+
+const CreditLink = styled.a`
+  ${focusEffect};
+`;
+
 interface MenuItem {
   href: string;
   text: string;
@@ -90,7 +104,7 @@ interface Navigation {
   setSideMenu: Function;
 }
 
-export default ({ sideMenu, setSideMenu }: Navigation) => {
+const navigation = ({ sideMenu, setSideMenu }: Navigation) => {
   const router = useRouter();
 
   React.useEffect(() => {
@@ -99,6 +113,9 @@ export default ({ sideMenu, setSideMenu }: Navigation) => {
 
   return (
     <>
+      <Head>
+        <title>Scrumy Cards</title>
+      </Head>
       <LogoButton
         onClick={() => {
           router.push("/");
@@ -128,7 +145,19 @@ export default ({ sideMenu, setSideMenu }: Navigation) => {
             setSideMenu={setSideMenu}
           />
         </ContentContainer>
+        <CreditContainer>
+          Made by{" "}
+          <CreditLink
+            href="https://github.com/lukaschneider"
+            style={{ outline: "none", textDecoration: "none" }}
+          >
+            Lukas Schneider
+          </CreditLink>{" "}
+          in Vorarlberg
+        </CreditContainer>
       </InfoPane>
     </>
   );
 };
+
+export default navigation;

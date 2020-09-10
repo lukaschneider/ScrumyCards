@@ -18,7 +18,7 @@ const initializeFirebase = async () => {
   await firestore.createAnonymousUser();
 };
 
-export default ({ Component, pageProps }: AppProps) => {
+const app = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {
     initializeFirebase();
   }, []);
@@ -39,3 +39,5 @@ export default ({ Component, pageProps }: AppProps) => {
     </ThemeProvider>
   );
 };
+
+export default app;

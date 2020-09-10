@@ -50,7 +50,7 @@ interface Game {
   result: boolean;
 }
 
-export default ({ gameId, gameDataString, result }: Game) => {
+const game = ({ gameId, gameDataString, result }: Game) => {
   const [resultView, showResultView] = React.useState(result);
 
   const gameData = JSON.parse(gameDataString);
@@ -158,3 +158,5 @@ const GameShareView = ({ gameId }: GameShareView) => {
     </>
   );
 };
+
+export default game;
